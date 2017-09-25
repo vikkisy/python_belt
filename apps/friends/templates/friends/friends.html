@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'friends/friends_styles.css' %}">
+  </head>
+  <body>
+    <div id="container">
+      <h1>Hello {{ user.name }}</h1>
+      <p>Here is the list of your friends:</p>
+      <a href="/">Log Out</a>
+
+      <div class="top">
+        <table class="list_friends">
+          <thead>
+            <th>Alias</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            {% for person in friendships %}
+            <tr>
+              <td>{{ person.id }}</td>
+              <td><a href="/user/{{ person.id }}">View Profile</a>
+                <a href="/remove/{{ person.id }}">Remove as Friend</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="bottom">
+        <p>Other Users not on your friends list:</p>
+        <table class="other_friends">
+          <thead>
+            <th>Alias</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            {% for friend in friends %}
+            <tr>
+              <td><a href="/user/{{ friend.id }}">{{ friend.alias }}</a></td>
+              <td><a href="/add/{{ friend.id }}"><button type="button" name="add">Add Friend</button></a>
+
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+  </body>
+</html>

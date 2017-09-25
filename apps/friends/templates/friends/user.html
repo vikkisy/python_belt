@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Friends</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'friends/user_styles.css' %}">
+  </head>
+  <body>
+    <div id="header">
+      <a href="/success">Home</a>
+      <a href="/">Logout</a>
+    </div>
+    <div id="container">
+
+      <h1>{{ user.alias }} Profile</h1>
+      <p>NAME: {{ user.name }}</p>
+      <p>EMAIL ADDRESS: {{ user.email}}</p>
+
+    </div>
+  </body>
+</html>
